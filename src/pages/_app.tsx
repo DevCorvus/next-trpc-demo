@@ -1,6 +1,8 @@
-import Layout from '@/components/Layout';
-import { trpc } from '@/server/utils/trpc-client';
 import '@/styles/globals.css';
+
+import Layout from '@/components/Layout';
+import { trpc } from '@/lib/trpc-client';
+
 import type { AppProps } from 'next/app';
 
 function App({ Component, pageProps }: AppProps) {

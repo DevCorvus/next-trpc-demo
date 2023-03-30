@@ -1,4 +1,4 @@
-import { trpc } from '@/server/utils/trpc-client';
+import { trpc } from '@/lib/trpc-client';
 
 export default function Home() {
   const healthcheck = trpc.healthcheck.useQuery();
