@@ -1,5 +1,5 @@
 import Layout from '@/components/Layout';
-import { trpc } from '@/server/utils/trpc';
+import { trpc } from '@/server/utils/trpc-client';
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 
