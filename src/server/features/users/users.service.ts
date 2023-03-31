@@ -10,6 +10,7 @@ interface UsersServiceInterface {
   update(id: number, data: UpdateUserDto): Promise<User>;
   delete(id: number): Promise<User>;
   exists(id: number): Promise<boolean>;
+  existsByEmail(email: string): Promise<boolean>;
 }
 
 export const usersService: UsersServiceInterface = {
@@ -31,6 +32,13 @@ export const usersService: UsersServiceInterface = {
   async exists(id) {
     const user = await prisma.user.findUnique({
       where: { id },
+      select: { id: true },
+    });
+    return Boolean(user);
+  },
+  async existsByEmail(email: string) {
+    const user = await prisma.user.findUnique({
+      where: { email },
       select: { id: true },
     });
     return Boolean(user);

@@ -4,7 +4,9 @@ import {
   protectedProcedure,
   publicProcedure,
 } from '@/server/lib/trpc/procedures';
+import { TRPCError } from '@trpc/server';
 
+import { passwordService } from '../shared/password/password.service';
 import { createUserSchema, updateUserSchema } from './user.schema';
 import { usersService } from './users.service';
 
@@ -15,9 +17,25 @@ export const usersRouter = router({
   findOne: publicProcedure.input(idSchema).query(({ input }) => {
     return usersService.findOne(input);
   }),
-  create: publicProcedure.input(createUserSchema).mutation(({ input }) => {
-    return usersService.create(input);
-  }),
+  create: publicProcedure
+    .input(createUserSchema)
+    .mutation(async ({ input }) => {
+      const userExists = await usersService.existsByEmail(input.email);
+
+      if (userExists) {
+        throw new TRPCError({
+          code: 'CONFLICT',
+          message: 'User already exists',
+        });
+      }
+
+      const hashedPassword = await passwordService.hash(input.password);
+
+      return usersService.create({
+        email: input.email,
+        password: hashedPassword,
+      });
+    }),
   update: protectedProcedure
     .input(updateUserSchema)
     .mutation(({ ctx, input }) => {
