@@ -38,8 +38,17 @@ export const usersRouter = router({
     }),
   update: protectedProcedure
     .input(updateUserSchema)
-    .mutation(({ ctx, input }) => {
-      return usersService.update(ctx.session.user.id, input);
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.session.user.id;
+
+      if (input.password) {
+        const hashedPassword = await passwordService.hash(input.password);
+        return usersService.update(userId, {
+          ...input,
+          password: hashedPassword,
+        });
+      }
+      return usersService.update(userId, input);
     }),
   delete: protectedProcedure.mutation(({ ctx }) => {
     return usersService.delete(ctx.session.user.id);
