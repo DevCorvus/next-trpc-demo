@@ -17,6 +17,10 @@ export default function Layout({ children }: LayoutProps) {
       </Head>
       <Navbar />
       <br />
+      <header>
+        <h1>Next tRPC demo</h1>
+      </header>
+      <br />
       <main>{children}</main>
     </>
   );

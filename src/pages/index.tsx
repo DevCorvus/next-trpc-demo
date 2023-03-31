@@ -1,6 +1,8 @@
+import Link from 'next/link';
+import { useEffect } from 'react';
+
 import { getSessionProps } from '@/auth/getSessionProps';
 import { trpc } from '@/lib/trpc-client';
-import { useEffect } from 'react';
 
 export const getServerSideProps = getSessionProps;
 
@@ -13,5 +15,11 @@ export default function Home() {
     }
   }, [healthcheck.data]);
 
-  return <div>App</div>;
+  return (
+    <ul>
+      <li>
+        <Link href={'/users'}>Users</Link>
+      </li>
+    </ul>
+  );
 }
