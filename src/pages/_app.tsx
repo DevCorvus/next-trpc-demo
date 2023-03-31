@@ -1,15 +1,19 @@
 import '@/styles/globals.css';
 
+import { SessionProvider } from 'next-auth/react';
+
 import Layout from '@/components/Layout';
 import { trpc } from '@/lib/trpc-client';
 
 import type { AppProps } from 'next/app';
 
-function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <SessionProvider session={session}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </SessionProvider>
   );
 }
 

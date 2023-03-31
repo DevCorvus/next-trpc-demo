@@ -39,9 +39,9 @@ export const usersRouter = router({
   update: protectedProcedure
     .input(updateUserSchema)
     .mutation(({ ctx, input }) => {
-      return usersService.update(ctx.userId, input);
+      return usersService.update(ctx.session.user.id, input);
     }),
   delete: protectedProcedure.mutation(({ ctx }) => {
-    return usersService.delete(ctx.userId);
+    return usersService.delete(ctx.session.user.id);
   }),
 });

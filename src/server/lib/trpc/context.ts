@@ -1,17 +1,13 @@
-import { getAuthBearer } from '@/server/features/auth/utils/getAuthBearer';
+import { getServerSession } from 'next-auth';
+
+import { nextAuthOptions } from '@/server/features/auth/auth.config';
 import { inferAsyncReturnType } from '@trpc/server';
 import { CreateNextContextOptions } from '@trpc/server/adapters/next';
 
 export async function createContext(opts: CreateNextContextOptions) {
-  let userId: number | null = null;
-  const bearer = getAuthBearer(opts.req);
-
-  if (bearer && !Number.isNaN(parseInt(bearer))) {
-    userId = parseInt(bearer);
-  }
-
+  const session = await getServerSession(opts.req, opts.res, nextAuthOptions);
   return {
-    userId,
+    session,
   };
 }
 

@@ -21,7 +21,7 @@ export const todosRouter = router({
   create: protectedProcedure
     .input(createTodoSchema)
     .mutation(({ ctx, input }) => {
-      return todosService.create(ctx.userId, input);
+      return todosService.create(ctx.session.user.id, input);
     }),
   update: protectedProcedure
     .input(
@@ -31,7 +31,10 @@ export const todosRouter = router({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const todoExists = await todosService.exists(input.id, ctx.userId);
+      const todoExists = await todosService.exists(
+        input.id,
+        ctx.session.user.id
+      );
 
       if (!todoExists) throw new UnauthorizedException();
 
@@ -40,7 +43,7 @@ export const todosRouter = router({
   delete: protectedProcedure
     .input(idSchema)
     .mutation(async ({ ctx, input }) => {
-      const todoExists = await todosService.exists(input, ctx.userId);
+      const todoExists = await todosService.exists(input, ctx.session.user.id);
 
       if (!todoExists) throw new UnauthorizedException();
 

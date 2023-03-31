@@ -9,12 +9,6 @@ export const trpc = createTRPCNext<AppRouter>({
       links: [
         httpBatchLink({
           url: 'http://localhost:3000/api/trpc',
-          async headers() {
-            return {
-              // TODO: Inject JWT
-              authorization: 'Bearer uwu',
-            };
-          },
         }),
       ],
     };

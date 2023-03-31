@@ -6,6 +6,7 @@ import { CreateUserDto, UpdateUserDto } from './user.dto';
 interface UsersServiceInterface {
   findAll(): Promise<User[]>;
   findOne(id: number): Promise<User | null>;
+  findOneByEmail(email: string): Promise<User | null>;
   create(data: CreateUserDto): Promise<User>;
   update(id: number, data: UpdateUserDto): Promise<User>;
   delete(id: number): Promise<User>;
@@ -19,6 +20,9 @@ export const usersService: UsersServiceInterface = {
   },
   findOne(id) {
     return prisma.user.findUnique({ where: { id } });
+  },
+  findOneByEmail(email: string) {
+    return prisma.user.findUnique({ where: { email } });
   },
   create(data) {
     return prisma.user.create({ data });
