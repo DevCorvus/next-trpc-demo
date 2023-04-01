@@ -1,3 +1,7 @@
+import {
+  createUserSchema,
+  updateUserSchema,
+} from '@/common/schemas/user.schema';
 import { idSchema } from '@/server/features/shared/schemas/id.schema';
 import { router } from '@/server/lib/trpc';
 import {
@@ -7,7 +11,6 @@ import {
 import { TRPCError } from '@trpc/server';
 
 import { passwordService } from '../shared/password/password.service';
-import { createUserSchema, updateUserSchema } from './user.schema';
 import { usersService } from './users.service';
 
 export const usersRouter = router({

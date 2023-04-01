@@ -1,7 +1,6 @@
+import { CreateTodoDto, UpdateTodoDto } from '@/common/dtos/todo.dto';
 import { prisma } from '@/server/lib/prisma';
 import { Todo } from '@prisma/client';
-
-import { CreateTodoDto, UpdateTodoDto } from './todo.dto';
 
 interface TodosServiceInterface {
   findAll(): Promise<Todo[]>;

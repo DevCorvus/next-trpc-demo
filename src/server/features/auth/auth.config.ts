@@ -1,9 +1,10 @@
 import { NextAuthOptions } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
+import { loginSchema } from '@/common/schemas/auth.schema';
+
 import { passwordService } from '../shared/password/password.service';
 import { usersService } from '../users/users.service';
-import { loginSchema } from './auth.schema';
 
 export const nextAuthOptions: NextAuthOptions = {
   providers: [
@@ -44,6 +45,7 @@ export const nextAuthOptions: NextAuthOptions = {
     jwt: async ({ token, user }) => {
       if (user) {
         token.id = user.id;
+        token.email = user.email;
       }
       return token;
     },
@@ -51,6 +53,7 @@ export const nextAuthOptions: NextAuthOptions = {
       if (token) {
         session.user = {
           id: token.id as number,
+          email: token.email as string,
         };
       }
       return session;

@@ -1,5 +1,9 @@
 import { z } from 'zod';
 
+import {
+  createTodoSchema,
+  updateTodoSchema,
+} from '@/common/schemas/todo.schema';
 import { router } from '@/server/lib/trpc';
 import { UnauthorizedException } from '@/server/lib/trpc/exceptions/UnauthorizedException';
 import {
@@ -8,7 +12,6 @@ import {
 } from '@/server/lib/trpc/procedures';
 
 import { idSchema } from '../shared/schemas/id.schema';
-import { createTodoSchema, updateTodoSchema } from './todo.schema';
 import { todosService } from './todos.service';
 
 export const todosRouter = router({

@@ -3,11 +3,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-import EditUserForm from '@/components/EditUserForm';
+import DeleteUserForm from '@/components/DeleteUserForm';
+import EditUserEmailForm from '@/components/EditUserEmailForm';
+import EditUserPasswordForm from '@/components/EditUserPasswordForm';
 import Loading from '@/components/Loading';
 import { User } from '@/interfaces/user';
 import { trpc } from '@/lib/trpc-client';
-import DeleteUserForm from '@/components/DeleteUserForm';
 
 export default function UserItem() {
   const session = useSession();
@@ -64,7 +65,9 @@ export default function UserItem() {
             {session.data?.user.id === user.data.id && (
               <>
                 <br />
-                <EditUserForm updateUser={updateUser} />
+                <EditUserEmailForm updateUser={updateUser} />
+                <br />
+                <EditUserPasswordForm updateUser={updateUser} />
                 <br />
                 <DeleteUserForm />
               </>

@@ -1,7 +1,6 @@
+import { CreateUserDto, UpdateUserDto } from '@/common/dtos/user.dto';
 import { prisma } from '@/server/lib/prisma';
 import { User } from '@prisma/client';
-
-import { CreateUserDto, UpdateUserDto } from './user.dto';
 
 interface UsersServiceInterface {
   findAll(): Promise<User[]>;

@@ -11,17 +11,21 @@ export default function Navbar() {
   return (
     <nav>
       <ul>
+        <li>
+          <Link href={'/'}>Home</Link>
+        </li>
         {!session.data ? (
           <>
             <li>
-              <Link href={'/sign-up'}>Sign Up</Link>
+              <Link href={'/sign-in'}>Sign In</Link>
             </li>
             <li>
-              <Link href={'/sign-in'}>Sign In</Link>
+              <Link href={'/sign-up'}>Sign Up</Link>
             </li>
           </>
         ) : (
           <li>
+            <span>{session.data.user.email}</span>{' '}
             <button onClick={handleLogout}>Sign Out</button>
           </li>
         )}
