@@ -27,12 +27,28 @@ export default function SignUp() {
     <>
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="email" placeholder="Enter your mail" />
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter your password"
-        />
+        <div>
+          <label htmlFor="email">Email</label>
+          <br />
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="Enter your mail"
+          />
+        </div>
+        <br />
+        <div>
+          <label htmlFor="password">Password</label>
+          <br />
+          <input
+            id="password"
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+          />
+        </div>
+        <br />
         <button type="submit">Submit</button>
       </form>
     </>
