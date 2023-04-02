@@ -1,38 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next tRPC demo
 
-## Getting Started
+A Next.js demo app with tRPC as API, NextAuth, Prisma (SQLite), Zod validation and some other fun tools.
 
-First, run the development server:
+You are free to explore and use the code at your convenience. I hope you find it useful and thanks for reading. ❤️
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Development
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project is based on my [GraphQL demos](https://github.com/DevCorvus/nestjs-graphql-demo). It is following an alternate path this time with tRPC instead of GraphQL.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+I don't think it's fair to compare GraphQL with tRPC because they try to solve different problems. tRPC is a framework for building end-to-end typesafe APIs that excels in ergonomics and general DX in full-stack projects using Typescript. IMO, tRPC has by far the best developer experience when it comes to the kind of project in which it aims to fit in: Full-stack web applications with Typescript, no doubt about it.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+I thought about making just a standalone tRPC API but it didn't make much sense considering that half of the purpose of tRPC involves the client-side. Having this in mind, I decided to integrate it with Next.js which has one of the best integrations for tRPC. I kept the UI as simple as possible, it's almost like raw HTML visually but it has all the functionality that I intented to show for this demo.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+_\- DevCorvus_

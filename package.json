@@ -1,5 +1,6 @@
 {
   "name": "next-trpc-demo",
+  "description": "A Next.js demo app with tRPC, NextAuth, Prisma (SQLite), Zod, etc.",
   "version": "0.1.0",
   "private": true,
   "scripts": {
