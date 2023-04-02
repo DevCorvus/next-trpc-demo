@@ -4,7 +4,7 @@ A Next.js demo app with tRPC as API, NextAuth, Prisma (SQLite), Zod validation a
 
 You are free to explore and use the code at your convenience. I hope you find it useful and thanks for reading. ❤️
 
-## Development
+## Development and thoughts on tRPC
 
 This project is based on my [GraphQL demos](https://github.com/DevCorvus/nestjs-graphql-demo). It is following an alternate path this time with tRPC instead of GraphQL.
 
